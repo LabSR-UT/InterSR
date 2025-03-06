@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
-#from PIL import Image
-import cv2
+
 from skimage.io import imread
 
 st.title('Propiedades de una imagen digital')
