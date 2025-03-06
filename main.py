@@ -18,4 +18,4 @@ if uploaded_file is not None:
     st.write(f"Tipo de dato: {image.dtype}")
     st.write(f"Capas por pixel: {image.ndim}")
 
-st.write("Nota: usar imagenes en formato jpg")
+st.write("Nota: usar imagenes en formato jpg o png")
