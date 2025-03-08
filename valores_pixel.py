@@ -18,7 +18,7 @@ x2 = image.shape[0]//2 + values[1]
 y1 = image.shape[1]//2 - values[0]
 y2 = image.shape[1]//2 + values[1]
 
-st.write("Las coordenadas son: (",x1,",",x2,":",y1,",",y2,")")
+st.write("Las coordenadas son: (",x1,":",x2,",",y1,":",y2,")")
 
 col1, col2 = st.columns(2)
 
