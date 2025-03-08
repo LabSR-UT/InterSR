@@ -6,6 +6,8 @@ st.title('Valores de pixeles de una imagen')
 
 uploaded_file = st.file_uploader("Seleccione una imagen...", type=["jpg", "jpeg", "png"])
 image = imread(uploaded_file)
+st.subheader("Imagen original")
+st.image(image, caption='imagen completa', width=200)
 st.write(f"Dimensiones de la imagen: {image.shape}")
 
 values = st.slider("Select a range of values", 0, 10, (2, 4))
