@@ -48,33 +48,3 @@ if uploaded_file is not None:
 	with col4:
 		st.header("Imagen corregida:")
 		st.image(tf_img, caption='gato_corregido (rotado, trasladado, escalado)', width=200)
-
-"""
-import cv2
-from io import BytesIO
-from io import BufferedReader
-
-image_rgb = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB) 
-
-ret, img_enco = cv2.imencode(".png", image_rgb)  #numpy.ndarray
-srt_enco = img_enco.tostring()  #bytes
-img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
-img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
-
-btn = st.download_button(
-	label="Download",
-	data=img_BufferedReader,
-	file_name="cat_corrected.png",
-	mime="image/png"
-)
-
-im1_gray = rgb2gray(img)
-im2_gray = rgb2gray(img_final)
-
-dists = []
-for i in range(0, len(im1_gray)):
-	dists.append(dist.euclidean(im1_gray[i], im2_gray[i]))
-sum_dists = sum(dists)
-ave_dist = sum_dists/len(dists)
-st.write("Diferencia: ", ave_dist)
-"""
