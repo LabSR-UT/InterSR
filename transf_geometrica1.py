@@ -1,7 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-from ipywidgets import interact, interactive, fixed, interact_manual
-import ipywidgets as widgets
 import skimage as ski
 from skimage import exposure, io
 from skimage import transform
