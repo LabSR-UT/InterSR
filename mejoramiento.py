@@ -4,6 +4,7 @@ from skimage import exposure, io
 from skimage import transform
 import numpy as np
 from skimage.color import rgb2gray
+import cv2
 
 st.title('Mejoramiento')
 
