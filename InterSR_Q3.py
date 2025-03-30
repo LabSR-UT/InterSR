@@ -3,7 +3,7 @@
 
 import streamlit as st
 
-st.title('Quiz 1')
+st.title('Quiz 3')
 st.subheader('Pregunta 1:')
 
 valor1 = st.radio("Cual es la principal diferencia entre los modelos de color RGB & HSV?",
