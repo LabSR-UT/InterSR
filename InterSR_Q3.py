@@ -1,5 +1,5 @@
 # Interpretacion SR
-# Quiz 2
+# Quiz 3
 
 import streamlit as st
 
