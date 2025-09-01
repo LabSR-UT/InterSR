@@ -1,7 +1,12 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-import cv2
+import skimage as sk
+from skimage.color import rgb2gray
+from skimage import io
+from skimage import feature
+from skimage import exposure
+import skimage.util as ski_util
 
 # Set the page configuration with a wide layout
 st.set_page_config(layout="wide", page_title="Procesamiento basico de Imagenes")
@@ -60,7 +65,8 @@ def apply_grayscale(image_np):
         st.warning("La imagen ya está en escala de grises.")
         return image_np
     
-    gray_image = cv2.cvtColor(image_np, cv2.COLOR_RGBA2GRAY)
+    #gray_image = cv2.cvtColor(image_np, cv2.COLOR_RGBA2GRAY)
+    gray_image = ski_util.img_as_ubyte(rgb2gray(image_np[:,:,:3]))
     return gray_image
 
 def apply_color_channels(image_np):
@@ -70,7 +76,12 @@ def apply_color_channels(image_np):
         return None
     
     # Separate the channels (R, G, B)
-    channels = cv2.split(image_np)
+    #channels = cv2.split(image_np)
+    red_channel = image_np[:, :, 0]
+    green_channel = image_np[:, :, 1]
+    blue_channel = image_np[:, :, 2]
+	
+    channels = [red_channel,green_channel,blue_channel]
     
     return channels
 
@@ -126,7 +137,8 @@ def apply_edge_detection(image_np):
         return None
 
     # Apply Canny edge detection
-    edges = cv2.Canny(gray_image, 100, 200)
+    #edges = cv2.Canny(gray_image, 100, 200)
+    edges = ski_util.img_as_ubyte(feature.canny(gray_image, sigma=1.0, low_threshold=0.1, high_threshold=0.2))
     
     return edges
 
@@ -141,8 +153,9 @@ def apply_histogram_equalization(image_np):
         return None
     
     # Apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
-    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
-    equalized_image = clahe.apply(gray_image)
+    #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+    #equalized_image = clahe.apply(gray_image)
+    equalized_image = ski_util.img_as_ubyte(exposure.equalize_hist(gray_image))
     
     return equalized_image
 
@@ -201,7 +214,7 @@ if uploaded_file is not None:
                     st.image(processed_image, caption="Imagen con deteccion de bordes", use_column_width=True)
                     
             elif processing_mode == "Ecualizacion de Histograma":
-                processed_image = apply_histogram_equalization(image_np)
+                processed_image = ski_util.img_as_ubyte(apply_histogram_equalization(image_np))
                 if processed_image is not None:
                     st.image(processed_image, caption="Imagen ecualizada", use_column_width=True)
 
