@@ -1,4 +1,5 @@
 import streamlit as st
+
 import skimage as ski
 from skimage import exposure, io
 from skimage import transform
@@ -9,11 +10,11 @@ import cv2
 st.title('Mejoramiento')
 
 uploaded_file = st.file_uploader("Seleccione una imagen...", type=["jpg", "jpeg", "png"])
-img = io.imread(uploaded_file)
+img = io.imread(uploaded_file)	
 
 option = st.selectbox(
-    "Tipo de mejoramiento",
-    ("Contraste", "Ecualizacion", "Paso Alto", "Paso Bajo", "Color"),
+	"Tipo de mejoramiento",
+	("Contraste", "Ecualizacion", "Paso Alto", "Paso Bajo", "Color"),
 )
 
 if option=="Contraste":
@@ -56,16 +57,16 @@ if option=="Ecualizacion":
 	  
 	# Equalize the histogram 
 	image2 = cv2.equalizeHist(gray_image) 
-	
-	
-col1, col2 = st.columns(2)
+		
 if uploaded_file is not None:	
 
-	with col1:
-		st.header("Imagen original:")
-		st.image(img, caption='huella', width=200)
+    col1, col2 = st.columns(2)
+	
+    with col1:
+        st.header("Imagen original:")
+        st.image(img, caption='1', width=200)
 
-	with col2:
-		st.header("Imagen mejorada: ")
-		st.image(image2, caption='huella', width=200)
+    with col2:
+        st.header("Imagen mejorada: ")
+        st.image(image2, caption='2', width=200)
 
