@@ -5,47 +5,51 @@ from skimage import color
 
 st.title('Modelos de Color')
 
+img = None # Initialize to None
+
 uploaded_file = st.file_uploader("Seleccione una imagen...", type=["jpg", "jpeg", "png", "jfif"])
-img = io.imread(uploaded_file)
-
-option = st.selectbox(
-    "Tipo de conversion",
-    ("RGB -> HSV"),
-)
-
-if option=="RGB -> HSV":
-	img2 = color.rgb2hsv(img) 
-
 	
-col1, col2 = st.columns(2)
+
 if uploaded_file is not None:	
 
-	with col1:
-		st.header("Imagen original:")
-		st.image(img, width=200)
+    img = io.imread(uploaded_file)
+    option = st.selectbox("Tipo de conversion",("RGB -> HSV","RGB -> Lab","RGB -> XYZ"))
+    option2 = int((st.selectbox("Canal",("0","1","2"))))
 
-	with col2:
-		st.header("Modelo: ")
-		st.image(img2, width=200)
+    if option=="RGB -> HSV":
+	    img2 = color.rgb2hsv(img) 
+    if option=="RGB -> Lab":
+        img2 = color.rgb2lab(img) 
+    if option=="RGB -> XYZ":
+        img2 = color.rgb2lab(img) 
 		
-col3, col4, col5 = st.columns(3)
-if uploaded_file is not None:	
+		
+		
+    col1, col2 = st.columns(2)
+    with col1:
+        st.header("Modelo RGB:")
+        st.image(img, width=200)
+    with col2:
+        st.header("Modelo {}".format(option[-3:]))
+        if option=="RGB -> HSV":
+            st.image(img2[:,:,option2], width=200, clamp=True)
+            st.write("Canal {} Min: {:.2f}".format(str(option2),img2[:,:,option2].min()), "Max: {:.2f}".format(img2[:,:,option2].max()))
+        if option=="RGB -> Lab":            
+            st.image(img2[:,:,option2], width=200, clamp=True)
+            st.write("Canal {} Min: {:.2f}".format(str(option2),img2[:,:,option2].min()), "Max: {:.2f}".format(img2[:,:,option2].max()))
+        if option=="RGB -> XYZ":
+            st.image(img2[:,:,option2], width=200, clamp=True)
+            st.write("Canal {} Min: {:.2f}".format(str(option2),img2[:,:,option2].min()), "Max: {:.2f}".format(img2[:,:,option2].max()))
+		
+    col3 = st.columns(1)
+    st.title("Actividad")
 
-	with col3:
-		if option=="RGB -> HSV":
-			st.header("Hue")
-			st.image(img2[:,:,0], width=200)
-			st.write("Min: {:.2f}".format(img2[:,:,0].min()), "Max: {:.2f}".format(img2[:,:,0].max()))
+    # 1. Ask the question using st.text_area
+    # The result (user's answer) is stored in the 'user_answer' variable
+    user_answer = st.text_area(
+        label="**Consulta:** Comparar los valores obtenidos para canal de luminosidad entre los modelos de color usados",
+        height=200,  # Sets the height of the input box
+        placeholder="Escriba su respuesta aca..."
+    )
 
-	with col4:
-		if option=="RGB -> HSV":
-			st.header("Saturacion")
-			st.image(img2[:,:,1], width=200)
-			st.write("Min: {:.2f}".format(img2[:,:,1].min()), "Max: {:.2f}".format(img2[:,:,1].max()))
-	
-	with col5:
-		if option=="RGB -> HSV":
-			st.header("Valor")
-			st.image(img2[:,:,2], width=200)
-			st.write("Min: {:.2f}".format(img2[:,:,2].min()), "Max: {:.2f}".format(img2[:,:,2].max()))
 
