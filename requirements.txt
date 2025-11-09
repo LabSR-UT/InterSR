@@ -1,5 +1,5 @@
 matplotlib
 scikit-image
 tensorflow
-sklearn.cluster
+sklearn
 streamlit
