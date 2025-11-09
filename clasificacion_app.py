@@ -80,14 +80,14 @@ def preprocess_image(image: Image.Image, target_size=(224, 224), include_top=Tru
 
 def supervised_classification(uploaded_file):
     """Handles the supervised image classification process."""
-    st.subheader("🚀 Supervised Classification (VGG16)")
+    st.subheader("🚀 Clasificacion Supervisada (VGG16)")
     
     if uploaded_file is not None:
         try:
             image = Image.open(uploaded_file)
-            st.image(image, caption='Uploaded Image', use_column_width=True)
+            st.image(image, caption='Subir imagen', use_column_width=True)
             st.write("")
-            st.write("Classifying...")
+            st.write("Clasificando...")
             
             # Preprocess the image
             processed_image = preprocess_image(image, include_top=True)
@@ -98,8 +98,8 @@ def supervised_classification(uploaded_file):
             # Decode the predictions
             decoded_predictions = tf.keras.applications.vgg16.decode_predictions(predictions, top=3)[0]
 
-            st.success("Classification Complete!")
-            st.markdown("### Top 3 Predictions:")
+            st.success("Clasificacion completada!")
+            st.markdown("### Mejores 3 Predicciones:")
             
             # Display results
             results_data = []
@@ -114,27 +114,27 @@ def supervised_classification(uploaded_file):
         except Exception as e:
             st.error(f"An error occurred during classification: {e}")
     else:
-        st.info("Please upload an image to start supervised classification.")
+        st.info("Por favor, suba una imagen para iniciar la clasificación supervisada.")
 
 # --- Main Streamlit App Layout ---
 
 def main():
     """Defines the main layout and logic of the Streamlit app."""
-    st.title("🖼️ Interactive Image Analysis App")
-    st.markdown("Select a method to analyze your images: Supervised Classification or Unsupervised Clustering.")
+    st.title("🖼️ Aplicación interactiva de análisis de imágenes")
+    st.markdown("Seleccione un método para analizar sus imágenes: Clasificación supervisada.")
 
     st.sidebar.header("App Configuration")
     analysis_mode = st.sidebar.radio(
-        "Select Analysis Mode:",
-        ("Supervised Classification")
+        "Selecciones Modo de Analisis:",
+        ("Clasificacion Supervisada")
     )
 
     st.divider()
 
-    if analysis_mode == "Supervised Classification":
+    if analysis_mode == "Clasificacion Supervisada":
         st.sidebar.subheader("Supervised Input")
         uploaded_file = st.sidebar.file_uploader(
-            "Upload a single image (JPG, PNG)", 
+            "Subir una sola imagen (JPG, PNG)", 
             type=["jpg", "jpeg", "png"],
             accept_multiple_files=False
         )
