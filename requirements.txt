@@ -8,4 +8,4 @@ pandas
 rasterio
 plotly
 geopandas
-request
+requests
