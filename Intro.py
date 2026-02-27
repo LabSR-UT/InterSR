@@ -43,15 +43,17 @@ if run:
     
         # 3. Base Plotly Figure        
         fig = px.imshow(img)
+
+        fig.update_layout(width=900, height=700)
+        st.plotly_chart(fig, use_container_width=True)
         
         
         st.sidebar.success("Hecho!")
     except Exception as e:
         st.sidebar.error(f"Error: {e}")
 
-    fig.update_layout(width=900, height=700)
+    
 
-    st.plotly_chart(fig, use_container_width=True)
 
 
 
