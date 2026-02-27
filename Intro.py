@@ -16,11 +16,11 @@ sat = st.sidebar.selectbox("Seleccione una imagen", ('Landsat', 'Sentinel', 'Pla
 if sat == 'Landsat':
     url = "RGB.tif"
 elif sat == 'Sentinel':
-    url = "https://github.com/LabSR-UT/InterSR/TCI.tif"
+    url = "TCI.tif"
 elif sat == 'Planet':
-    url = "https://github.com/LabSR-UT/InterSR/20201214_144239_07_222b_3B_Visual_clip.tif"
+    url = "20201214_144239_07_222b_3B_Visual_clip.tif"
 else:
-    url = "https://github.com/LabSR-UT/InterSR/logo_campus_modified.tif"
+    url = "logo_campus_modified.tif"
 
 run = st.sidebar.button('Aplicar')
     
@@ -53,6 +53,7 @@ if run:
         st.sidebar.error(f"Error: {e}")
 
     
+
 
 
 
