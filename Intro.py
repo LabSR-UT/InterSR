@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import rasterio
 from rasterio.plot import reshape_as_image
 import geopandas as gpd
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide", page_title="Intro SR")
 
@@ -51,6 +52,7 @@ if run:
     fig.update_layout(width=900, height=700)
 
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
