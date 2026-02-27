@@ -14,7 +14,7 @@ st.markdown("Esta aplicacion permite visualizar imagenes de varias plataformas d
 sat = st.sidebar.selectbox("Seleccione una imagen", ('Landsat', 'Sentinel', 'Planet', 'UAV' ))
 
 if sat == 'Landsat':
-    url = "https://github.com/LabSR-UT/InterSR/RGB.tif"
+    url = "RGB.tif"
 elif sat == 'Sentinel':
     url = "https://github.com/LabSR-UT/InterSR/TCI.tif"
 elif sat == 'Planet':
@@ -53,6 +53,7 @@ if run:
         st.sidebar.error(f"Error: {e}")
 
     
+
 
 
 
