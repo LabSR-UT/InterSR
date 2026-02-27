@@ -35,9 +35,6 @@ def get_raster_and_meta(url):
         img_display = (img_display - img_display.min()) / (img_display.max() - img_display.min())
         return img_display, transform, crs
 
-# 2. File Uploader
-uploaded_file = gpd.read_file("https://github.com/LabSR-UT/InterSR/campusUT.geojson")
-
 # 4. Alignment Logic
 if run:
     try:
@@ -46,29 +43,7 @@ if run:
         # 3. Base Plotly Figure        
         fig = px.imshow(img)
         
-        gdf = uploaded_file
         
-        # Ensure GeoJSON matches the Image's Coordinate System
-        gdf = gdf.to_crs(img_crs)
-
-        for _, row in gdf.iterrows():
-            if row.geometry.geom_type in ['Polygon', 'MultiPolygon']:
-                # Get the 'exterior' of the polygon
-                # We use ~transform to turn (Lon, Lat) -> (Row, Col)
-                for poly in (row.geometry.geoms if row.geometry.geom_type == 'MultiPolygon' else [row.geometry]):
-                    lon_coords, lat_coords = poly.exterior.coords.xy
-                    
-                    # THE MAGIC STEP: Convert GPS to Pixels
-                    cols, rows = rasterio.transform.rowcol(transform, lon_coords, lat_coords)
-                    
-                    fig.add_trace(go.Scatter(
-                        x=rows, y=cols, 
-                        mode='lines', 
-                        fill="toself",
-                        fillcolor="rgba(255, 255, 0, 0.0)",  # Yellow with 30% opacity
-                        line=dict(color='yellow', width=3),                        
-                        name="Capas alineadas"
-                    ))
         st.sidebar.success("Hecho!")
     except Exception as e:
         st.sidebar.error(f"Error: {e}")
@@ -76,5 +51,6 @@ if run:
     fig.update_layout(width=900, height=700)
 
     st.plotly_chart(fig, use_container_width=True)
+
 
 
