@@ -6,6 +6,6 @@ streamlit
 numpy
 pandas
 rasterio
-plotly.express
+plotly
 geopandas
 request
