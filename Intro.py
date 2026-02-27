@@ -13,13 +13,13 @@ st.markdown("Esta aplicacion permite visualizar imagenes de varias plataformas d
 sat = st.sidebar.selectbox("Seleccione una imagen", ('Landsat', 'Sentinel', 'Planet', 'UAV' ))
 
 if sat == 'Landsat':
-    url = "C:/Codigo/Streamlit/InterSR-A26/data/Landsat/LS4/RGB.tif"
+    url = "https://github.com/LabSR-UT/InterSR/RGB.tif"
 elif sat == 'Sentinel':
-    url = "C:/Codigo/Streamlit/InterSR-A26/data/Sentinel/S2/TCI.tif"
+    url = "https://github.com/LabSR-UT/InterSR/TCI.tif"
 elif sat == 'Planet':
-    url = "C:/Codigo/Streamlit/InterSR-A26/data/Planet/20201214_144239_07_222b_3B_Visual_clip.tif"
+    url = "https://github.com/LabSR-UT/InterSR/20201214_144239_07_222b_3B_Visual_clip.tif"
 else:
-    url = "C:/Codigo/Streamlit/InterSR-A26/data/UAV/logo_campus_modified.tif"
+    url = "https://github.com/LabSR-UT/InterSR/logo_campus_modified.tif"
 
 run = st.sidebar.button('Aplicar')
     
@@ -74,4 +74,5 @@ if run:
         st.sidebar.error(f"Error: {e}")
 
     fig.update_layout(width=900, height=700)
+
     st.plotly_chart(fig, use_container_width=True)
