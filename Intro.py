@@ -36,7 +36,7 @@ def get_raster_and_meta(url):
         return img_display, transform, crs
 
 # 2. File Uploader
-uploaded_file = gpd.read_file("D:/DATOS/Downloads/LT04_L2SP_008057_19900819_20200916_02_T1/Recortes/campusUT.gpkg")
+uploaded_file = gpd.read_file("https://github.com/LabSR-UT/InterSR/campusUT.gpkg")
 
 # 4. Alignment Logic
 if run:
@@ -76,3 +76,4 @@ if run:
     fig.update_layout(width=900, height=700)
 
     st.plotly_chart(fig, use_container_width=True)
+
