@@ -1,6 +1,5 @@
 matplotlib
 scikit-image
-tensorflow
 scikit-learn
 streamlit 
 numpy
