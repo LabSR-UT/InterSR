@@ -22,12 +22,12 @@ if uploaded_file is not None:
 
     # 1. Rotation & Scale
     st.sidebar.subheader("Rotacion & Escalamiento")
-    angle = st.sidebar.slider("Rotation Angle", -180, 180, 0)
-    scale = st.sidebar.slider("Scale", 0.1, 3.0, 1.0)
+    angle = st.sidebar.slider("Angulo de Rotacion", -180, 180, 0)
+    scale = st.sidebar.slider("Escalamiento", 0.1, 3.0, 1.0)
 
     # 2. Translation
     st.sidebar.subheader("Translacion")
-    tx = st.sidebar.slider("Translacien en X (pixeles)", -w, w, 0)
+    tx = st.sidebar.slider("Translacion en X (pixeles)", -w, w, 0)
     ty = st.sidebar.slider("Translacion en Y (pixeles)", -h, h, 0)
 
     # 3. Perspective Warp (Simulated by shifting corners)
