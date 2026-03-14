@@ -7,4 +7,4 @@ pandas
 rasterio
 plotly.express
 geopandas
-cv2
+opencv-python
