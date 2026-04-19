@@ -3,7 +3,7 @@ import numpy as np
 import rasterio
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
-from PIL import Image
+#from PIL import Image
 
 st.title("Transformada Karhunen-Loève (KLT)")
 
