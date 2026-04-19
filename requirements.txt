@@ -8,3 +8,4 @@ rasterio
 plotly.express
 geopandas
 opencv-python-headless
+PIL
