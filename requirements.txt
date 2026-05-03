@@ -10,4 +10,4 @@ geopandas
 opencv-python-headless
 xarray
 rioxarray
-sklearn_extra
+scikit-learn-extra
