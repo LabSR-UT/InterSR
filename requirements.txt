@@ -11,3 +11,4 @@ opencv-python-headless
 xarray
 rioxarray
 scikit-learn-extra
+setuptools
