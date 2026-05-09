@@ -12,3 +12,5 @@ xarray
 rioxarray
 scikit-learn-extra
 setuptools
+streamlit_plotly_events
+pillow
